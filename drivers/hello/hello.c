@@ -33,4 +33,3 @@ module_exit(hello_exit);
 
 MODULE_DESCRIPTION("example: Hello LDD");
 MODULE_LICENSE("GPL");
-
