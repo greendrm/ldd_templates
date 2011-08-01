@@ -23,11 +23,23 @@
 
 struct sample_device {
 	struct i2c_client *client;
+	int irq;
 	/* TODO */
 };
 
 
 /* TODO */
+/*
+static irqreturn_t sample_irq_handler(int irq, void *_dev)
+{
+	struct sample_device *dev = _dev;
+	struct i2c_client *client = dev->client;
+
+	// TODO
+
+	return IRQ_HANDLED;
+}
+*/
 
 static int __devinit sample_i2c_probe(struct i2c_client *client,
 		const struct i2c_device_id *id)
@@ -52,6 +64,17 @@ static int __devinit sample_i2c_probe(struct i2c_client *client,
 	i2c_set_clientdata(client, dev);
 
 	// pdata = client->dev.platform_data;
+
+	/*
+	dev->irq = client->irq;
+
+	ret = request_irq(dev->irq, sample_irq_handler, IRQF_TRIGGER_FALLING,
+		"sample i2c client", dev);
+	if (ret < 0) {
+		dev_err(&client->dev, "failure requesting irq %d\n", ret);
+		...
+	}
+	*/
 	
 	/* TODO: do something */
 
